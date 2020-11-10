@@ -1,3 +1,18 @@
 # CourseProject
+## Running the project
+#### Prereqs
+Must have the following software installed:
+    - Python 3.7
+    - Pip 3
+    - NodeJS 14.15.0
+    - Flask (install with pip)
 
-Please fork this repository and paste the github link of your fork on Microsoft CMT. Detailed instructions are on Coursera under Week 1: Course Project Overview/Week 9 Activities.
+#### Running the Backend
+Navigate to the backend/ directory and run the following command:
+```
+flask run
+```
+This will start the backend on port 5000
+
+#### Running the Frontend
+Navigate to the backend/ 
