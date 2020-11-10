@@ -15,4 +15,8 @@ flask run
 This will start the backend on port 5000
 
 #### Running the Frontend
-Navigate to the backend/ 
+Navigate to the frontend/ directory and run the following command:
+```
+yarn start
+```
+This will start the frontend on port 3000. Note that you may need to run ```yarn``` before ```yarn start``` to install dependencies.
