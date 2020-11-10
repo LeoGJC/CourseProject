@@ -1,7 +1,13 @@
 # Project Overview
 
 ## Technologies
-Use Python 3.7 for all of backend (scraping data, sentiment analysis, similarity measure). JavaScript with ReactJS for the frontend and Flask for the backend endpoints.
+#### Backend
+Use Python 3.7 for all of backend (scraping data, sentiment analysis, similarity measure). 
+Flask for the backend.
+
+#### Frontend
+NodeJS 14.15.0 with ReactJS for the frontend
+Yarn for package manager
 
 ### Scraping API data - 10 hours (Zoheb)
 -   Learn specifics about API usage
