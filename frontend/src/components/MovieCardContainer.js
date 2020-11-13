@@ -7,7 +7,22 @@ const MovieCardContainer = (props) => {
 	const [movies, setMovies] = useState(props.movies);
 
     useEffect(() => {
-		setMovies(props.movies)
+		let newMovies = Array.from(movies);
+
+		for (let i = 0; i < props.movies.length; i++) {
+			var isMovieAlreadyInList = false;
+			for (let j = 0; j < movies.length; j++) {
+				if (props.movies[i].id == movies[j].id) {
+					isMovieAlreadyInList = true;
+					break;
+				}
+			}
+
+			if (!isMovieAlreadyInList)
+				newMovies.push(props.movies[i]);
+		}
+
+		setMovies(newMovies);
 	}, [props.movies])
 
   const itemRenderer = (item, index) => {
