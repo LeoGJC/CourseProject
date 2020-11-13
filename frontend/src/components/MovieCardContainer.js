@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card } from './Card';
 import update from 'immutability-helper';
 
@@ -8,16 +8,21 @@ const style = {
 
 export const MovieCardContainer = (props) => 
 {
+	useEffect(() => {
+		setCards(props.cards);
+		console.log(props.cards)
+	}, [props]);
+
 	const [cards, setCards] = useState(props.cards);
 	const moveCard = useCallback((dragIndex, hoverIndex) => {
-		const dragCard = cards[dragIndex];
-		setCards(update(cards, {
+		const dragCard = props.cards[dragIndex];
+		setCards(update(props.cards, {
 			$splice: [
 			[dragIndex, 1],
 			[hoverIndex, 0, dragCard],
 		],
 	    }));
-	}, [cards]);
+	}, [props.cards]);
 	    
 	const renderCard = (card, index) => {
 	    return (<Card key={card.id} index={index} id={card.id} text={card.text} moveCard={moveCard}/>);
