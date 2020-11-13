@@ -5,8 +5,13 @@ import { useState } from 'react'
 import { Row, Button, Col, InputGroup, FormControl } from 'react-bootstrap';
 
 const MovieSelector = () => {
-    const [cardData, setCardData] = useState([{id: 1, title:"Movie 1", index: 1}, {id:2, title:"Movie 2", index: 2}, {id:3, title:"Movie 3", index:1}]);
+    const [cardData, setCardData] = useState([]);
     const [movie, setMovie] = useState("");
+
+    const OnKeyDown = (event) => {
+        if (event.key == 'Enter')
+            OnAddMovie();
+    }
 
     const OnAddMovie = () => {
         var movieData = {
@@ -26,6 +31,7 @@ const MovieSelector = () => {
                 <FormControl 
                     placeholder="Enter a Movie"
                     aria-label="Enter a Movie"
+                    onKeyDown={OnKeyDown}
                     onChange={event=>setMovie(event.target.value)} />
                 <InputGroup.Append>
                     <Button variant="primary" onClick={OnAddMovie}>Add Movie</Button>
