@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import RLDD from "react-list-drag-and-drop/lib/RLDD";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import { useState } from 'react';
 
 const MovieCardContainer = (props) => {
@@ -27,7 +27,10 @@ const MovieCardContainer = (props) => {
 
   const itemRenderer = (item, index) => {
     return (
-		<Card body>{item.title}</Card>
+		<Card body><h3>
+			<Badge variant="primary">{index + 1}</Badge> 
+			{" " + item.title}
+		</h3></Card>
 	);
   }
 
