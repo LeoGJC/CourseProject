@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import RLDD from "react-list-drag-and-drop/lib/RLDD";
-import { useState } from 'react'
-import "./Card.css";
+import { Card } from "react-bootstrap";
+import { useState } from 'react';
 
 const MovieCardContainer = (props) => {
 	const [movies, setMovies] = useState(props.movies);
@@ -27,20 +27,13 @@ const MovieCardContainer = (props) => {
 
   const itemRenderer = (item, index) => {
     return (
-      <div className="item">
-        <p className="title">{item.title}</p>
-        <p className="body">{item.body}</p>
-        <div className="small">
-          item.id: {item.id} - index: {index}
-        </div>
-      </div>
-    );
+		<Card body>{item.title}</Card>
+	);
   }
 
     return (
       <div>
         <RLDD
-          cssClasses="example"
           items={movies}
           itemRenderer={itemRenderer}
           onChange={setMovies}
