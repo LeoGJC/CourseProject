@@ -1,8 +1,6 @@
 import MovieCardContainer from './MovieCardContainer'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useState } from 'react'
-import { Row, Button, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { Button, InputGroup, FormControl } from 'react-bootstrap';
 import './MovieSelector.css';
 
 const MovieSelector = () => {
@@ -39,6 +37,7 @@ const MovieSelector = () => {
                     </InputGroup.Append>
                 </InputGroup>
                 <MovieCardContainer movies={cardData} />
+                <Button disabled={cardData.length < 2} id='result-button'>See Results</Button>
         </div>
     );
 }

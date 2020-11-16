@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+#result-button {
+    width: 100%;
+}
+
 .movie-selector-container-w {
     width: 90%;
 }
