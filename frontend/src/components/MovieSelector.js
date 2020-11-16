@@ -3,6 +3,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useState } from 'react'
 import { Row, Button, Col, InputGroup, FormControl } from 'react-bootstrap';
+import './MovieSelector.css';
 
 const MovieSelector = () => {
     const [cardData, setCardData] = useState([]);
@@ -21,25 +22,24 @@ const MovieSelector = () => {
         }
 
         setCardData(cardData.concat(movieData));
+        setMovie("");
     }
 
     return (
-        <Row>
-            <Col md={1} sm={0}/>
-            <Col md={10} sm={12}>
-            <InputGroup>
-                <FormControl 
-                    placeholder="Enter a Movie"
-                    aria-label="Enter a Movie"
-                    onKeyDown={OnKeyDown}
-                    onChange={event=>setMovie(event.target.value)} />
-                <InputGroup.Append>
-                    <Button variant="primary" onClick={OnAddMovie}>Add Movie</Button>
-                </InputGroup.Append>
-            </InputGroup>
-            <MovieCardContainer movies={cardData} />
-            </Col>
-        </Row>
+        <div id='movie-selector-container' className='movie-selector-container-w' >
+                <InputGroup>
+                    <FormControl 
+                        placeholder="Enter a Movie"
+                        aria-label="Enter a Movie"
+                        value={movie}
+                        onKeyDown={OnKeyDown}
+                        onChange={event=>setMovie(event.target.value)} />
+                    <InputGroup.Append>
+                        <Button variant="primary" onClick={OnAddMovie}>Add Movie</Button>
+                    </InputGroup.Append>
+                </InputGroup>
+                <MovieCardContainer movies={cardData} />
+        </div>
     );
 }
 
