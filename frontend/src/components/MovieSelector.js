@@ -40,7 +40,7 @@ const MovieSelector = () => {
 
     return (
         <div id='movie-selector-container' className='movie-selector-container-w' >
-                <ResultModal isVisible={areResultsVisible} content={resultText}/>
+                <ResultModal isVisible={areResultsVisible} setVisibility={setResultsVisible} content={resultText}/>
                 <InputGroup>
                     <FormControl 
                         placeholder="Enter a Movie"

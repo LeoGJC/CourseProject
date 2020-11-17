@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const ResultModal = (props) => {
     const [isVisible, setIsVisible] = useState(props.isVisible);
-    const toggleVisibility = () => setIsVisible(!isVisible);
+    const toggleVisibility = () => props.setVisibility(!isVisible);
 
     useEffect(() => {
         setIsVisible(props.isVisible);
