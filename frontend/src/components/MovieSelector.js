@@ -1,12 +1,15 @@
 import MovieCardContainer from './MovieCardContainer'
-import { SUBMIT_ENDPOINT } from './../constants'
+import { SUBMIT_ENDPOINT, TEXT_LOADING } from './../constants'
 import { useState } from 'react'
 import { Button, InputGroup, FormControl } from 'react-bootstrap';
 import './MovieSelector.css';
+import ResultModal from './ResultModal';
 
 const MovieSelector = () => {
     const [cardData, setCardData] = useState([]);
     const [movie, setMovie] = useState("");
+    const [areResultsVisible, setResultsVisible] = useState(false);
+    const [resultText, setResultText] = useState("");
 
     const OnKeyDown = (event) => {
         if (event.key == 'Enter')
@@ -25,6 +28,8 @@ const MovieSelector = () => {
     }
 
     const SubmitMovies = () => {
+        setResultsVisible(true);
+        setResultText(TEXT_LOADING)
         fetch(SUBMIT_ENDPOINT, {
             method: "POST",
             body: JSON.stringify(cardData),
@@ -35,6 +40,7 @@ const MovieSelector = () => {
 
     return (
         <div id='movie-selector-container' className='movie-selector-container-w' >
+                <ResultModal isVisible={areResultsVisible} content={resultText}/>
                 <InputGroup>
                     <FormControl 
                         placeholder="Enter a Movie"
