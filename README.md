@@ -12,6 +12,7 @@ Must have the following software installed:
 From anywhere in your command line, to install flask, run
 ```
 pip3 install flask
+pip3 install flask_cors
 ```
 And to install yarn, run
 ```
