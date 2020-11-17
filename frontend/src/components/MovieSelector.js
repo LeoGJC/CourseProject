@@ -33,6 +33,9 @@ const MovieSelector = () => {
         var response = await fetch(SUBMIT_ENDPOINT, {
             method: "POST",
             body: JSON.stringify(cardData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         var data = await response.json();
