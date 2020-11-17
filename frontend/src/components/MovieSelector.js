@@ -27,15 +27,16 @@ const MovieSelector = () => {
         setMovie("");
     }
 
-    const SubmitMovies = () => {
+    const SubmitMovies = async function() {
         setResultsVisible(true);
         setResultText(TEXT_LOADING)
-        fetch(SUBMIT_ENDPOINT, {
+        var response = await fetch(SUBMIT_ENDPOINT, {
             method: "POST",
             body: JSON.stringify(cardData),
-        }).then(res => {
-            // TODO: Display results
-        })
+        });
+
+        var data = await response.json();
+        setResultText(data['message'])
     }
 
     return (
