@@ -27,20 +27,24 @@ const MovieSelector = () => {
         setMovie("");
     }
 
-    const SubmitMovies = () => {
+    const SubmitMovies = async function() {
         setResultsVisible(true);
         setResultText(TEXT_LOADING)
-        fetch(SUBMIT_ENDPOINT, {
+        var response = await fetch(SUBMIT_ENDPOINT, {
             method: "POST",
             body: JSON.stringify(cardData),
-        }).then(res => {
-            // TODO: Display results
-        })
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        var data = await response.json();
+        setResultText(data['message'])
     }
 
     return (
         <div id='movie-selector-container' className='movie-selector-container-w' >
-                <ResultModal isVisible={areResultsVisible} content={resultText}/>
+                <ResultModal isVisible={areResultsVisible} setVisibility={setResultsVisible} content={resultText}/>
                 <InputGroup>
                     <FormControl 
                         placeholder="Enter a Movie"
