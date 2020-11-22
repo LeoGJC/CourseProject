@@ -1,12 +1,10 @@
-import requests
-from bs4 import BeautifulSoup
-
-
+#from Soup import Soup
 
 class Movie:
 
-    def __init__(self, title):
+    def __init__(self, title, soup):
         self.title = title
+        self.soup = soup
         self.user_reviews = []
         self.critic_reviews= []
         self.reviews = []
@@ -16,48 +14,48 @@ class Movie:
         self.user_pages = 0
         self.critic_review_pages = 0
 
-    def get_soup(self,type,page='0'):
-        user_agent = {'User-agent': 'Mozilla/5.0'}
-        if(type == 'user'):
-            url = f'https://www.metacritic.com/movie/{self.title}/{type}-reviews?page={page}'
-        else:
-            url = f'https://www.metacritic.com/movie/{self.title}/{type}-reviews'
-        r = requests.get(url, headers= user_agent)
-        return BeautifulSoup(r.content, 'html5lib')
+    def set_user_reviews(self):
+        self.user_reviews = self.soup.get_user_reviews(self.title)
+        self.user_review_count = len(self.user_reviews)
 
     def get_user_reviews(self):
-        for i in range(self.user_pages):
-            temp = self.get_soup('user',i)
-            for result in temp.find_all('span', class_='blurb blurb_expanded'):
-                    self.user_reviews.append(result.text.strip())
-                    self.user_review_count+=1
+        return self.user_reviews
+
+    def get_user_review_count(self):
+        return self.user_review_count
+
+    def set_critic_reviews(self):
+        self.critic_reviews = self.soup.get_critic_reviews(self.title)
+        self.critic_review_count = len(self.critic_reviews)
+
 
     def get_critic_reviews(self):
-        temp = self.get_soup('critic')
-        for result in temp.find_all('a', class_='no_hover'):
-            self.critic_reviews.append(result.text.strip())
-            self.critic_review_count+=1
+        return self.critic_reviews
 
-    def get_user_page_num(self):
-        user_soup = self.get_soup('user')
-        for result in user_soup.find_all('li', class_='last_page'):
-            self.user_pages = int(result.text)
+    def get_critic_review_count(self):
+        return self.critic_review_count
+
+    def get_all_reviews(self):
+        return self.reviews
+
+    def get_all_review_count(self):
+        return self.review_count
 
     #Main Generator Method
-    def get_all_reviews(self):
-        self.get_user_page_num()
-        self.get_user_reviews()
-        self.get_critic_reviews()
+    def set_all_reviews(self):
+        self.set_user_reviews()
+        self.set_critic_reviews()
         self.reviews = self.user_reviews + self.critic_reviews
         self.review_count = self.user_review_count + self.critic_review_count
 
 
-m = Movie('the-matrix')
 
-m.get_all_reviews()
-print(m.user_review_count,' ',len(m.user_reviews))
-print(m.critic_review_count,' ',len(m.critic_reviews))
-print(m.review_count,' ',len(m.reviews))
+#m = Movie('the-matrix', Soup())
+
+#m.get_all_reviews()
+#print(m.user_review_count,' ',len(m.user_reviews))
+#print(m.critic_review_count,' ',len(m.critic_reviews))
+#print(m.review_count,' ',len(m.reviews))
 #print(m.reviews)
 #print(m.critic_reviews)
 #print(m.user_reviews)
