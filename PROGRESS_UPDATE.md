@@ -12,6 +12,7 @@ The frontend is finished. It's also been integrated with a mock endpoint until w
 
 ## Backend REST Endpoints
 The web frontend will do the sentiment analysis by sending the user data to the backend which will run our python scripts. Right now, the frontend is communicating with a backend endpoint that returns fake data. We just need to drop in the real script once it's done.
+![Image of current frontend](https://ibb.co/6wZhrCb)
 
 ## Review Scraping
 
