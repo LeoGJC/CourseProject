@@ -6,7 +6,7 @@ class Soup:
 
     def __init__(self):
         pass
-        
+
     def get_soup(self,url):
         r = requests.get(url, headers= {'User-agent': 'Mozilla/5.0'})
         return BeautifulSoup(r.content, 'html5lib')
@@ -15,6 +15,7 @@ class Soup:
         url = self.URL+f'{title}/user-reviews?page='
         try:
             user_pages = self.get_soup(url+'0').find('li', class_='last_page').text
+            user_pages.decode("utf-8").replace(u"\u2026", "").encode("utf-8")
         except AttributeError:
             user_pages = 1
         reviews = []
@@ -31,5 +32,5 @@ class Soup:
         return(reviews)
 
 #s = Soup()
-#print(s.get_user_reviews('hellboy'))
+#print(s.get_user_reviews('star-wars-episode-ix---the-rise-of-skywalker'))
 #print(s.get_critic_reviews('the-matrix'))

@@ -7,7 +7,7 @@ def analyze_movies(movies):
     # TODO: Analyze the movies and return a response
 
     #formats the movie titles to metacritic url standards
-    movie_list_formatter(movies)
+    movie_title_formatter(movies)
 
     #adds movie property to hold the Movie object
     movie_object_generator(movies)
@@ -17,7 +17,7 @@ def analyze_movies(movies):
 
 def movie_title_formatter(movies):
     for movie in movies:
-        movie['title'] = movie['title'].replace(' ','-').lower()
+        movie['title'] = movie['title'].replace(' ','-').replace(':','').lower()
 
 def movie_object_generator(movies):
     for movie in movies:
@@ -25,4 +25,4 @@ def movie_object_generator(movies):
         tempMovie.set_all_reviews()
         movie["movie"] = tempMovie
 
-    #print(movies[1]['movie'].get_all_reviews())
+    print(movies[0]['movie'].get_all_reviews())
