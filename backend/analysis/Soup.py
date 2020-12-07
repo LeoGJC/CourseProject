@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 class Soup:
     URL = 'https://www.metacritic.com/movie/'
 
+    def __init__(self):
+        pass
+        
     def get_soup(self,url):
         r = requests.get(url, headers= {'User-agent': 'Mozilla/5.0'})
         return BeautifulSoup(r.content, 'html5lib')
