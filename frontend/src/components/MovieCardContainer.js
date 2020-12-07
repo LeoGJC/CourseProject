@@ -1,29 +1,49 @@
-import React, { useState, useCallback } from 'react';
-import { Card } from './Card';
-import update from 'immutability-helper';
+import React, { useEffect } from "react";
+import RLDD from "react-list-drag-and-drop/lib/RLDD";
+import { Card, Badge } from "react-bootstrap";
+import { useState } from 'react';
+import './Card.css'
 
-const style = {
-    width: "30%",
-};
+const MovieCardContainer = (props) => {
+	const [movies, setMovies] = useState(props.movies);
 
-export const MovieCardContainer = (props) => 
-{
-	const [cards, setCards] = useState(props.cards);
-	const moveCard = useCallback((dragIndex, hoverIndex) => {
-		const dragCard = cards[dragIndex];
-		setCards(update(cards, {
-			$splice: [
-			[dragIndex, 1],
-			[hoverIndex, 0, dragCard],
-		],
-	    }));
-	}, [cards]);
-	    
-	const renderCard = (card, index) => {
-	    return (<Card key={card.id} index={index} id={card.id} text={card.text} moveCard={moveCard}/>);
-	};
+    useEffect(() => {
+		let newMovies = Array.from(movies);
 
-	return (<>
-		    <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
-		</>);
-};
+		for (let i = 0; i < props.movies.length; i++) {
+			var isMovieAlreadyInList = false;
+			for (let j = 0; j < movies.length; j++) {
+				if (props.movies[i].id == movies[j].id) {
+					isMovieAlreadyInList = true;
+					break;
+				}
+			}
+
+			if (!isMovieAlreadyInList)
+				newMovies.push(props.movies[i]);
+		}
+
+		setMovies(newMovies);
+	}, [props.movies])
+
+  const itemRenderer = (item, index) => {
+    return (
+		<Card body><h3 className='card-content'>
+			<Badge variant="primary">{index + 1}</Badge> 
+			{" " + item.title}
+		</h3></Card>
+	);
+  }
+
+    return (
+      <div className='card-container'>
+        <RLDD
+          items={movies}
+          itemRenderer={itemRenderer}
+          onChange={setMovies}
+        />
+      </div>
+    );
+}
+
+export default MovieCardContainer;

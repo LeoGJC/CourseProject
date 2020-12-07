@@ -9,10 +9,13 @@ Must have the following software installed:
 * Yarn (See below)
 
 ### Installing Flask and Yarn
-From anywhere in your command line, to install flask, run
+From anywhere in your command line, to install flask (and other dependencies), run
 ```
 pip3 install flask
 pip3 install flask_cors
+pip3 install requests
+pip3 install bs4
+pip3 install html5lib
 ```
 And to install yarn, run
 ```
