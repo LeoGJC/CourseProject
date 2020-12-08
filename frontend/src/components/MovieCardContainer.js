@@ -24,7 +24,7 @@ const MovieCardContainer = (props) => {
 		}
 
 		setMovies(newMovies);
-	}, [props.movies])
+	}, [props.movies, movies])
 
   const itemRenderer = (item, index) => {
     return (
