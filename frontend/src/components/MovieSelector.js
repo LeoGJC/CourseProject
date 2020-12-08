@@ -12,7 +12,7 @@ const MovieSelector = () => {
     const [resultText, setResultText] = useState("");
 
     const OnKeyDown = (event) => {
-        if (event.key == 'Enter')
+        if (event.key === 'Enter')
             OnAddMovie();
     }
 
