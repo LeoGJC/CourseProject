@@ -2,6 +2,9 @@
 ## Overview of the project
 This repository consists of two applications -- a web frontend and a python backend. Given a list of movies from the user on the frontend, it will be sent to the backend for processing. The backend will scrape reviews of the movies, do sentiment analysis, and compose a ranking of the movies based on this analysis. Then the user can compare their ranking of movies with the sentiment analyzer's rankings.
 
+## Presentation
+See the presentation [here](https://drive.google.com/file/d/12vfNJwHatzTdFzN8J8TfjTIDoJpQn8Bg/view?usp=sharing)!
+
 ## Member Contributions
 See the Proposal.md file in the root of the repository for a breakdown of what each member contributed.
 
