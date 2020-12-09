@@ -11,9 +11,9 @@ Details about how the software work and its implementation can be found in Propo
 ## Running the project
 #### Prereqs
 Must have the following software installed:
-* Python 3.7
+* [Python 3.7](https://www.python.org/downloads/release/python-379/)
 * Pip 3
-* NodeJS 14.15.0
+* [NodeJS 14.15.0](https://nodejs.org/download/release/v14.15.0/)
 * Flask (See below)
 * Yarn (See below)
 
