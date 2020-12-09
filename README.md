@@ -5,6 +5,9 @@ This repository consists of two applications -- a web frontend and a python back
 ## Member Contributions
 See the Proposal.md file in the root of the repository for a breakdown of what each member contributed.
 
+## Implementation
+Details about how the software work and its implementation can be found in Proposal.md and PROGRESS_UPDATE.md
+
 ## Running the project
 #### Prereqs
 Must have the following software installed:
