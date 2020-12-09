@@ -13,7 +13,7 @@ const MovieCardContainer = (props) => {
 		for (let i = 0; i < props.movies.length; i++) {
 			var isMovieAlreadyInList = false;
 			for (let j = 0; j < movies.length; j++) {
-				if (props.movies[i].id === movies[j].id) {
+				if (props.movies[i].id == movies[j].id) {
 					isMovieAlreadyInList = true;
 					break;
 				}
@@ -24,7 +24,7 @@ const MovieCardContainer = (props) => {
 		}
 
 		setMovies(newMovies);
-	}, [props.movies, movies])
+	}, [props.movies])
 
   const itemRenderer = (item, index) => {
     return (

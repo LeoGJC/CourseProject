@@ -9,10 +9,10 @@ const MovieSelector = () => {
     const [cardData, setCardData] = useState([]);
     const [movie, setMovie] = useState("");
     const [areResultsVisible, setResultsVisible] = useState(false);
-    const [resultText, setResultText] = useState("");
+    const [resultText, setResultText] = useState([['Results loading', 'may take a few minutes']]);
 
     const OnKeyDown = (event) => {
-        if (event.key === 'Enter')
+        if (event.key == 'Enter')
             OnAddMovie();
     }
 
@@ -29,7 +29,7 @@ const MovieSelector = () => {
 
     const SubmitMovies = async function() {
         setResultsVisible(true);
-        setResultText(TEXT_LOADING)
+        setResultText([['Results loading', 'may take a few minutes']]);
         var response = await fetch(SUBMIT_ENDPOINT, {
             method: "POST",
             body: JSON.stringify(cardData),
@@ -39,6 +39,7 @@ const MovieSelector = () => {
         });
 
         var data = await response.json();
+        console.log(data)
         setResultText(data['message'])
     }
 

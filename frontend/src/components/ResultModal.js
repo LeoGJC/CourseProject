@@ -9,11 +9,16 @@ const ResultModal = (props) => {
         setIsVisible(props.isVisible);
     }, [props.isVisible]);
 
+
+
     return (
         <div>
             <Modal isOpen={isVisible} toggle={toggleVisibility}>
                <ModalHeader toggle={toggleVisibility}>Results</ModalHeader> 
-               <ModalBody>{props.content}</ModalBody>
+               <ModalBody>
+                {props.content.map((movie, i) => {
+                   return (<p>{movie[0]} ({movie[1]})</p>)
+               })}</ModalBody>
                <ModalFooter>
                    <Button color="primary" onClick={toggleVisibility}>Close</Button>
                </ModalFooter>
