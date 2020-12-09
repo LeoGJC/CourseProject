@@ -4,6 +4,7 @@ This repository consists of two applications -- a web frontend and a python back
 
 ## Presentation
 See the presentation [here](https://drive.google.com/file/d/12vfNJwHatzTdFzN8J8TfjTIDoJpQn8Bg/view?usp=sharing)!
+If you have any issues or want a live demo, email mlw6@illinois.edu
 
 ## Member Contributions
 See the Proposal.md file in the root of the repository for a breakdown of what each member contributed.
