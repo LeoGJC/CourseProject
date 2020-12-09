@@ -25,7 +25,7 @@ pip install flask_cors
 pip install requests
 pip install bs4
 pip install html5lib
-pip install ntlk
+pip install nltk
 ```
 And to install yarn, run
 ```
