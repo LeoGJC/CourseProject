@@ -10,7 +10,6 @@ def main():
         review_dict[title] = movie
         print(review_dict[title].get_all_reviews())
 
-def
 
 if __name__ == "__main__":
     main()
